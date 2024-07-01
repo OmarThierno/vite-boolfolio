@@ -8,7 +8,7 @@ export default {
           title: 'Home'
         },
         {
-          routeName: 'card-page',
+          routeName: 'projects',
           title: 'Card page'
         },
       ]
