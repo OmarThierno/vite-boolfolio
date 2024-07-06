@@ -50,7 +50,7 @@ export default {
     resetContactSend() {
       setTimeout(() => {
         this.contactSend = false;
-      }, 2000);
+      }, 3000);
     }
   }
 }
@@ -63,17 +63,23 @@ export default {
     <form action="">
       <div class="row row-cols-1 row-cols-md-2">
         <div class="col">
+          <div class="alert alert-success" v-if="contactSend">
+            You message has been sent successfully!
+          </div>
           <div class="mb-3">
             <label for="name" class="form-label">Insert your name</label>
-            <input type="text" class="form-control" id="name" placeholder="Marco" v-model="form.name">
+            <input :class="{'is-invalid': errors.name}" type="text" class="form-control" id="name" placeholder="Marco" v-model="form.name">
+            <div v-if="errors.name" class="invalid-feedback">{{ errors.name[0] }}</div>
           </div>
           <div class="mb-3">
             <label for="lastname" class="form-label">Insert your lastname</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Rossi" v-model="form.lastname">
+            <input :class="{'is-invalid': errors.lastname}" type="text" class="form-control" id="lastname" placeholder="Rossi" v-model="form.lastname">
+            <div v-if="errors.lastname" class="invalid-feedback">{{ errors.lastname[0] }}</div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Insert your email</label>
-            <input type="email" class="form-control" id="email" placeholder="marco@rossi.com" v-model="form.email">
+            <input :class="{'is-invalid': errors.email}" type="email" class="form-control" id="email" placeholder="marco@rossi.com" v-model="form.email">
+            <div v-if="errors.email" class="invalid-feedback">{{ errors.email[0] }}</div>
           </div>
           <div class="mb-3">
             <label for="phone-number" class="form-label">Insert your phone number</label>
@@ -81,8 +87,9 @@ export default {
               v-model="form.phone_number">
           </div>
           <div class="mb-3">
-            <label for="message" class="form-label">Insert message</label>
+            <label :class="{'is-invalid': errors.message}" for="message" class="form-label">Insert message</label>
             <textarea class="form-control" id="message" rows="3" v-model="form.message"></textarea>
+            <div v-if="errors.message" class="invalid-feedback">{{ errors.message[0] }}</div>
           </div>
         </div>
       </div>
