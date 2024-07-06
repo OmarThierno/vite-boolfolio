@@ -29,8 +29,14 @@ export const router = createRouter({
       name: 'contacts',
       component: ContactsPage
     },
+    //generico
+    // {
+    //   path: '/projects/not-found',
+    //   name: 'not-found',
+    //   component: NotFound
+    // },
     {
-      path: '/projects/not-found',
+      path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: NotFound
     }
