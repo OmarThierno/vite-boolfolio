@@ -1,6 +1,8 @@
 <script>
 import axios from 'axios';
 import AppCard from '../components/AppCard.vue';
+import { store } from '../store';
+
 export default {
   components: {
     AppCard,
@@ -8,6 +10,7 @@ export default {
   data() {
     return {
       projects: [],
+      store,
     }
   },
   created() {
@@ -15,7 +18,7 @@ export default {
   },
   methods: {
     getAllProjects() {
-      axios.get('http://127.0.0.1:8000/api/projects').then((resp) => {
+      axios.get(`${this.store.apiUrl}/api/projects`).then((resp) => {
         // console.log(resp);
         this.projects = resp.data.results;
       })

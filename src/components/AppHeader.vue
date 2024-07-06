@@ -11,6 +11,10 @@ export default {
           routeName: 'projects',
           title: 'Card page'
         },
+        {
+          routeName: 'contacts',
+          title: 'Contact Us'
+        },
       ]
     }
   }
